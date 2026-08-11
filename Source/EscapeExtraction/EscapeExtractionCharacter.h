@@ -38,6 +38,7 @@ public:
 
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+	virtual void PossessedBy(AController* NewController) override;
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -50,5 +51,6 @@ protected:
 	void StopJump();
 
 private:
+	UFUNCTION()
 	void OnHealthChanged(float CurrentHealth);
 };

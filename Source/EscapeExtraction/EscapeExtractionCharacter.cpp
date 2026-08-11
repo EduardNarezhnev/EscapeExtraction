@@ -3,6 +3,7 @@
 
 #include "EscapeExtractionCharacter.h"
 #include "GameFramework/SpringArmComponent.h"
+#include "GameFramework/Controller.h"
 #include "Camera/CameraComponent.h"
 #include "Components/InputComponent.h"
 #include "HealthComponent.h"
@@ -128,3 +129,16 @@ void AEscapeExtractionCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProp
     Super::GetLifetimeReplicatedProps(OutLifetimeProps);
     DOREPLIFETIME(AEscapeExtractionCharacter, CollectedItems);
 }
+
+void AEscapeExtractionCharacter::PossessedBy(AController* NewController)
+{
+    Super::PossessedBy(NewController);
+  
+	if (APlayerController* PC = Cast<APlayerController>(NewController))
+    {
+        PC->EnableInput(PC);
+        PC->SetInputMode(FInputModeGameOnly());
+        PC->bShowMouseCursor = false;
+    }
+}
+

@@ -51,12 +51,7 @@ void AEscapeExtractionGameMode::RestartGame()
         return;
     }
 
-    GetWorldTimerManager().SetTimer(
-        RestartTimerHandle,
-        this,
-        &AEscapeExtractionGameMode::PerformRestart,
-        false
-    );
+    PerformRestart();
 }
 
 void AEscapeExtractionGameMode::PerformRestart()
@@ -64,3 +59,4 @@ void AEscapeExtractionGameMode::PerformRestart()
     FString CurrentLevelName = UGameplayStatics::GetCurrentLevelName(this);
     UGameplayStatics::OpenLevel(this, FName(*CurrentLevelName));
 }
+

@@ -16,6 +16,5 @@ class ESCAPEEXTRACTION_API AEscapeExtractionGameState : public AGameStateBase
 
 public:
 	UPROPERTY(Replicated, BlueprintReadOnly, Category = "Game")
-	int32 CollectedItemsCount = 0;
-	
+	int32 CollectedItemsCount = 0;	
 };

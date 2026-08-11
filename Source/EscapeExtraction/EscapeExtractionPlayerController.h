@@ -32,7 +32,7 @@ public:
 
 	UPROPERTY(BlueprintReadOnly, Category = "UI")
 	UUserWidget* PauseWidget = nullptr;
-
+	
 private:
 	bool bIsPaused = false;
 
