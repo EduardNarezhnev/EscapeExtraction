@@ -71,6 +71,14 @@ void AHazardActor::Tick(float DeltaTime)
 	float Distance = FVector::Dist(GetActorLocation(), CachedPlayer->GetActorLocation());
 
 	UpdateHazardState(Distance);
+
+	if (bIsActive && bCanApplyDamage && CachedPlayer)
+    {
+        if (BoxCollisionComponent->IsOverlappingActor(CachedPlayer))
+        {
+            ApplyDamageToPlayer(CachedPlayer);
+        }
+    }
 }
 
 void AHazardActor::UpdateHazardState(float Distance)

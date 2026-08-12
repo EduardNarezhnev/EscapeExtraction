@@ -142,3 +142,14 @@ void AEscapeExtractionCharacter::PossessedBy(AController* NewController)
     }
 }
 
+float AEscapeExtractionCharacter::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
+{
+    if (HealthComponent)
+    {
+        HealthComponent->TakeDamage(DamageAmount);
+        return DamageAmount;
+    }
+
+    return 0.0f;
+}
+
