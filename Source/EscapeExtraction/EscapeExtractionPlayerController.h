@@ -33,6 +33,9 @@ public:
 	UPROPERTY(BlueprintReadOnly, Category = "UI")
 	UUserWidget* PauseWidget = nullptr;
 	
+	UFUNCTION(BlueprintImplementableEvent, Category = "UI")
+	void BP_ShowHUDMessage(const FString& Message, float Duration);
+	
 private:
 	bool bIsPaused = false;
 

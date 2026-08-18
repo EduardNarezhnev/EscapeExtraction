@@ -6,6 +6,7 @@
 #include "EscapeExtractionCharacter.h"
 #include "EscapeExtractionGameMode.h"
 #include "EscapeExtractionGameState.h"
+#include "EscapeExtractionPlayerController.h"
 #include "Kismet/GameplayStatics.h"
 
 AExtractionTrigger::AExtractionTrigger()
@@ -41,11 +42,14 @@ void AExtractionTrigger::OnOverlapBegin(AActor* OverlappedActor, AActor* OtherAc
     }
     else
     {
-        GEngine->AddOnScreenDebugMessage(
-            -1,
-            2.0f,
-            FColor::Red,
-            FString::Printf(TEXT("Need %d more keys!"), GM->ItemsToCollect - GS->CollectedItemsCount)
-        );
+        if (APlayerController* PC = GetWorld()->GetFirstPlayerController())
+        {
+            if (AEscapeExtractionPlayerController* MyPC = Cast<AEscapeExtractionPlayerController>(PC))
+            {
+                int32 Needed = GM->ItemsToCollect - GS->CollectedItemsCount;
+                FString Message = FString::Printf(TEXT("Need %d more keys!"), Needed);
+                MyPC->BP_ShowHUDMessage(Message, 2.0f);
+            }
+        }
     }
 }

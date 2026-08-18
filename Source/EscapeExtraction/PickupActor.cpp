@@ -47,8 +47,6 @@ void APickupActor::OnOverlapBegin(UPrimitiveComponent *OverlappedComponent, AAct
 	{
 		UGameplayStatics::PlaySound2D(this, PickupSound);
 	}
-
-	Destroy();
 }
 
 void APickupActor::ApplyEffect(AEscapeExtractionCharacter *Character)

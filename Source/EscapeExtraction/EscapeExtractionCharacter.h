@@ -36,6 +36,13 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 	virtual void PossessedBy(AController* NewController) override;
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void BP_ShowDamageEffect();
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void BP_ShowHealEffect();
+	
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -51,4 +58,6 @@ protected:
 private:
 	UFUNCTION()
 	void OnHealthChanged(float CurrentHealth);
+
+	float PreviousHealth = 0.0f;
 };

@@ -9,5 +9,6 @@ void AKeyPickup::ApplyEffect(AEscapeExtractionCharacter *Character)
     if(Character)
     {
         Character->AddItem(KeyCount);
+        Destroy();
     }
 }

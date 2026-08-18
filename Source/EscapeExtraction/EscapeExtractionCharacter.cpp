@@ -20,7 +20,7 @@ AEscapeExtractionCharacter::AEscapeExtractionCharacter()
 
 	CameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
 	CameraComponent->SetupAttachment(RootComponent);
-	CameraComponent->SetRelativeLocation(FVector(0.0f, 0.0f, 80.0f)); // На уровне глаз
+	CameraComponent->SetRelativeLocation(FVector(0.0f, 0.0f, 80.0f));
 	CameraComponent->bUsePawnControlRotation = true;
 
 	GetMesh()->SetVisibility(false);
@@ -37,6 +37,7 @@ void AEscapeExtractionCharacter::BeginPlay()
 	
 	if(HealthComponent)
 	{
+		PreviousHealth = HealthComponent->CurrentHealth;;
 		HealthComponent->OnHealthDepleted.AddDynamic(this, &AEscapeExtractionCharacter::HandleDeath);
 		HealthComponent->OnHealthChanged.AddDynamic(this, &AEscapeExtractionCharacter::OnHealthChanged);
 	}
@@ -121,7 +122,20 @@ void AEscapeExtractionCharacter::HandleDeath()
 
 void AEscapeExtractionCharacter::OnHealthChanged(float CurrentHealth)
 {
-	
+	APlayerController* PC = Cast<APlayerController>(GetController());
+	if(PC)
+	{
+		if(CurrentHealth < PreviousHealth)
+		{
+			BP_ShowDamageEffect();
+		}
+		else if(CurrentHealth > PreviousHealth)
+		{
+			BP_ShowHealEffect();
+		}
+		
+		PreviousHealth = CurrentHealth;
+	}	
 }
 
 void AEscapeExtractionCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
@@ -136,6 +150,7 @@ void AEscapeExtractionCharacter::PossessedBy(AController* NewController)
   
 	if (APlayerController* PC = Cast<APlayerController>(NewController))
     {
+		// Enabling input after restart (unreal forgets to do so)
         PC->EnableInput(PC);
         PC->SetInputMode(FInputModeGameOnly());
         PC->bShowMouseCursor = false;

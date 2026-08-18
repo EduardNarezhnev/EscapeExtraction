@@ -57,6 +57,7 @@ protected:
 private:
 	FVector InitialLocation;
 
+	// Cached player pointer (optimization)
 	class AEscapeExtractionCharacter* CachedPlayer = nullptr;
 
 	bool bCanApplyDamage = true;

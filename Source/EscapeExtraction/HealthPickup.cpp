@@ -7,8 +7,11 @@
 
 void AHealthPickup::ApplyEffect(AEscapeExtractionCharacter *Character)
 {
-    if(Character && Character->HealthComponent)
+    if (!Character || !Character->HealthComponent) return;
+
+    if (Character->HealthComponent->CurrentHealth < Character->HealthComponent->MaxHealth)
     {
         Character->HealthComponent->Heal(HealAmount);
+        Destroy();
     }
 }
