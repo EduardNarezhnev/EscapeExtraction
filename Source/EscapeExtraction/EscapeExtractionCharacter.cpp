@@ -18,13 +18,13 @@ AEscapeExtractionCharacter::AEscapeExtractionCharacter()
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
-	SpringArmComponent = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArm"));
-	SpringArmComponent->SetupAttachment(RootComponent);
-	SpringArmComponent->TargetArmLength = 300.0f;
-	SpringArmComponent->bUsePawnControlRotation = true;
-
 	CameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
-	CameraComponent->SetupAttachment(SpringArmComponent);
+	CameraComponent->SetupAttachment(RootComponent);
+	CameraComponent->SetRelativeLocation(FVector(0.0f, 0.0f, 80.0f)); // На уровне глаз
+	CameraComponent->bUsePawnControlRotation = true;
+
+	GetMesh()->SetVisibility(false);
+	GetMesh()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 
 	HealthComponent = CreateDefaultSubobject<UHealthComponent>(TEXT("HealthComponent"));
 
@@ -52,7 +52,7 @@ void AEscapeExtractionCharacter::SetupPlayerInputComponent(UInputComponent* Play
 	PlayerInputComponent->BindAxis("Turn", this, &AEscapeExtractionCharacter::Turn);
 	PlayerInputComponent->BindAxis("LookUp", this, &AEscapeExtractionCharacter::LookUp);
 	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &AEscapeExtractionCharacter::StartJump);
-	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &AEscapeExtractionCharacter::StopJump);
+	PlayerInputComponent->BindAction("Jump", IE_Released, this, &AEscapeExtractionCharacter::StopJump);
 }
 
 void AEscapeExtractionCharacter::MoveForward(float Value)

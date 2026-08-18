@@ -18,7 +18,7 @@ AHazardActor::AHazardActor()
 
 	MeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh"));
     RootComponent = MeshComponent;
-    MeshComponent->SetCollisionProfileName("OverlapAllDynamic");
+    MeshComponent->SetCollisionProfileName("BlockAllDynamic");
 
     BoxCollisionComponent = CreateDefaultSubobject<UBoxComponent>(TEXT("BoxCollision"));
     BoxCollisionComponent->SetupAttachment(RootComponent);
@@ -131,7 +131,8 @@ void AHazardActor::MoveTowardsPlayer(float DeltaTime)
 	FVector Direction = (CachedPlayer->GetActorLocation() - GetActorLocation()).GetSafeNormal();
 
 	FVector NewLocation = GetActorLocation() + Direction * Speed * DeltaTime;
-	SetActorLocation(NewLocation);
+
+	AddActorWorldOffset(Direction * Speed * DeltaTime, true);
 }
 
 void AHazardActor::ReturnToBase(float DeltaTime)
