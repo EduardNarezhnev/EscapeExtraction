@@ -19,6 +19,7 @@ public:
 	virtual void BeginPlay() override;
 	virtual void SetupInputComponent() override;
 
+	UFUNCTION(BlueprintCallable, Category = "UI")
 	void TogglePause();
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "UI")

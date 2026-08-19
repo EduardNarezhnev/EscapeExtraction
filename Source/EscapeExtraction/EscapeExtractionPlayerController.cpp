@@ -39,6 +39,11 @@ void AEscapeExtractionPlayerController::TogglePause()
     {
         if(PauseMenuClass)
         {
+            if (HUDWidget)
+            {
+                HUDWidget->SetVisibility(ESlateVisibility::Hidden);
+            }
+
             PauseWidget = CreateWidget<UUserWidget>(this, PauseMenuClass);
             if(PauseWidget)
             {
@@ -50,6 +55,11 @@ void AEscapeExtractionPlayerController::TogglePause()
     }
     else
     {
+        if (HUDWidget)
+        {
+            HUDWidget->SetVisibility(ESlateVisibility::Visible);
+        }
+
         if(PauseWidget)
         {
             PauseWidget->RemoveFromParent();
