@@ -27,6 +27,15 @@ public:
 	UPROPERTY(BlueprintReadWrite, Category = "UI")
 	bool bIsDangerNear = false;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Sound")
+	TArray<USoundBase*> FootstepSounds;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Sound")
+	USoundBase* DamageSound;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Sound")
+	USoundBase* HealSound;
+
 	UFUNCTION(BlueprintCallable, Category = "Inventory")
 	void AddItem(int32 Count = 1);
 
@@ -37,15 +46,19 @@ public:
 
 	virtual void PossessedBy(AController* NewController) override;
 
-	UFUNCTION(BlueprintImplementableEvent)
+	UFUNCTION(BlueprintImplementableEvent, Category = "Damage")
 	void BP_ShowDamageEffect();
 
-	UFUNCTION(BlueprintImplementableEvent)
+	UFUNCTION(BlueprintImplementableEvent, Category = "Heal")
 	void BP_ShowHealEffect();
-	
+
+	UFUNCTION(BlueprintCallable, Category = "Sound")
+	void PlayFootstep();
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+	virtual void Tick(float DeltaTime) override;
 	virtual float TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, AActor* DamageCauser) override;
 
 	void MoveForward(float Value);
@@ -60,4 +73,7 @@ private:
 	void OnHealthChanged(float CurrentHealth);
 
 	float PreviousHealth = 0.0f;
+
+	float FootstepTimer = 0.0f;
+	const float FootstepInterval = 0.3f;
 };

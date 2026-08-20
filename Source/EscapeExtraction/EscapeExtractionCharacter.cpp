@@ -11,6 +11,7 @@
 #include "EscapeExtractionGameState.h"
 #include "Net/UnrealNetwork.h"
 #include "Kismet/GameplayStatics.h"
+#include "GameFramework/CharacterMovementComponent.h"
 
 // Sets default values
 AEscapeExtractionCharacter::AEscapeExtractionCharacter()
@@ -40,6 +41,25 @@ void AEscapeExtractionCharacter::BeginPlay()
 		PreviousHealth = HealthComponent->CurrentHealth;;
 		HealthComponent->OnHealthDepleted.AddDynamic(this, &AEscapeExtractionCharacter::HandleDeath);
 		HealthComponent->OnHealthChanged.AddDynamic(this, &AEscapeExtractionCharacter::OnHealthChanged);
+	}
+}
+
+void AEscapeExtractionCharacter::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+
+	if(GetVelocity().Size() > 0.0f && GetCharacterMovement()->IsMovingOnGround())
+	{
+		FootstepTimer -= DeltaTime;
+		if(FootstepTimer <= 0.0f)
+		{
+			PlayFootstep();
+			FootstepTimer = FootstepInterval;
+		}
+	}
+	else
+	{
+		FootstepTimer = 0.0f;
 	}
 }
 
@@ -127,15 +147,36 @@ void AEscapeExtractionCharacter::OnHealthChanged(float CurrentHealth)
 	{
 		if(CurrentHealth < PreviousHealth)
 		{
-			BP_ShowDamageEffect();
+			BP_ShowDamageEffect();	
+			if(DamageSound)
+			{
+				UGameplayStatics::PlaySound2D(this, DamageSound);
+			}
 		}
 		else if(CurrentHealth > PreviousHealth)
 		{
 			BP_ShowHealEffect();
+			if(HealSound)
+			{
+				UGameplayStatics::PlaySound2D(this, HealSound);
+			}
 		}
 		
 		PreviousHealth = CurrentHealth;
 	}	
+}
+
+void AEscapeExtractionCharacter::PlayFootstep()
+{
+	if(FootstepSounds.Num() == 0) return;
+
+	int32 RandomIndex = FMath::RandRange(0, FootstepSounds.Num() - 1);
+	USoundBase* SelectedSound = FootstepSounds[RandomIndex];
+
+	if(SelectedSound)
+	{
+		UGameplayStatics::PlaySound2D(this, SelectedSound);
+	}
 }
 
 void AEscapeExtractionCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
