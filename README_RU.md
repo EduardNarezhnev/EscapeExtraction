@@ -47,6 +47,8 @@ Unreal Engine 5.6, C++(основная логика), Blueprint(для UI, зв
 
 [Ссылка на Google Drive](https://drive.google.com/file/d/1tEWpGDCybu7dlfBqDH-X8pq1K_WMJycf/view?usp=sharing)
 
+**Платформа:** Windows 64-bit  
+
 Распакуй архив и запусти `EscapeExtraction.exe`.
 
 ## Контакты

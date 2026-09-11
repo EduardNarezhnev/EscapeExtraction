@@ -47,6 +47,8 @@ Unreal Engine 5.6, C++ (core logic), Blueprint (UI, effects, sounds), DataAsset 
 
 [Google Drive link](https://drive.google.com/file/d/1tEWpGDCybu7dlfBqDH-X8pq1K_WMJycf/view?usp=sharing)
 
+**Platform:** Windows 64-bit  
+
 Unzip the archive and run `EscapeExtraction.exe`.
 
 ## Contact
