@@ -1,54 +1,54 @@
 # Escape Extraction
 
-Небольшая игра на Unreal Engine 5 для портфолио.
+A small Unreal Engine 5 game I made for my portfolio.
 
-## Что это
+## What it is
 
-Нужно собрать 3 ключа на уровне и дойти до зоны эвакуации. Если здоровье кончится — проигрыш. Если дойдёшь с ключами — победа.
+Collect 3 keys on the level and reach the extraction zone. If your health drops to zero — you lose. If you make it with the keys — you win.
 
-## Управление
+## Controls
 
-- WASD — движение
-- Мышь — камера
-- Space — прыжок
-- Escape — пауза
+- WASD — movement
+- Mouse — camera
+- Space — jump
+- Escape — pause
 
-## Что реализовано
+## Features
 
-- Персонаж от первого лица
-- Система здоровья с полоской в HUD
-- Ключи и аптечки
-- Ловушки, которые активируются при приближении и преследуют игрока
-- Победа, поражение, рестарт
-- Меню паузы
-- Звуки шагов, урона и лечения
-- Красный экран при уроне, зелёный при лечении
+- First-person character
+- Health system with a HUD bar
+- Keys and medkits
+- Hazards that activate when you get close and chase you
+- Win, lose, and restart
+- Pause menu
+- Footstep, damage, and heal sounds
+- Red screen on damage, green on heal
 
-## Технологии
+## Tech
 
-Unreal Engine 5.6, C++(основная логика), Blueprint(для UI, звуков и эффектов), DataAsset(настройка баланса ловушек).
+Unreal Engine 5.6, C++ (core logic), Blueprint (UI, effects, sounds), DataAsset (hazard balance tuning).
 
-## Скриншоты и видео
+## Screenshots and Video
 
-![Уровень](Docs/screenshot_level.jpg)
-![Ловушка1](Docs/screenshot_hazard_inactive.jpg)
-![Ловушка2](Docs/screenshot_hazard_active.jpg)
-![Предмет1](Docs/screenshot_pickup_1.jpg)
-![Предмет2](Docs/screenshot_pickup_2.jpg)
-![UI Во время игры](Docs/screenshot_ui_hud.jpg)
-![UI Проигрыш](Docs/screenshot_ui_gameover_lose.jpg)
-![UI Выигрыш](Docs/screenshot_ui_gameover_win.jpg)
-![UI Меню паузы](Docs/screenshot_ui_pause.jpg)
-![Пример кода](Docs/screenshot_cpp_source.jpg)
+![Level](Docs/screenshot_level.jpg)
+![Hazard inactive](Docs/screenshot_hazard_inactive.jpg)
+![Hazard active](Docs/screenshot_hazard_active.jpg)
+![Pickup1](Docs/screenshot_pickup_1.jpg)
+![Pickup2](Docs/screenshot_pickup_2.jpg)
+![In-game HUD](Docs/screenshot_ui_hud.jpg)
+![Lose screen](Docs/screenshot_ui_gameover_lose.jpg)
+![Win screen](Docs/screenshot_ui_gameover_win.jpg)
+![Pause menu](Docs/screenshot_ui_pause.jpg)
+![C++ source example](Docs/screenshot_cpp_source.jpg)
 
-[Ссылка на YouTube](https://youtu.be/ducnEOf2lqw) - 2 минуты, показывает весь геймплей
+[Gameplay video on YouTube](https://youtu.be/ducnEOf2lqw) — 2 minutes, shows key collection, hazards, and the win.
 
-## Скачать
+## Download
 
-[Ссылка на Google Drive](https://drive.google.com/file/d/1tEWpGDCybu7dlfBqDH-X8pq1K_WMJycf/view?usp=sharing)
+[Google Drive link](https://drive.google.com/file/d/1tEWpGDCybu7dlfBqDH-X8pq1K_WMJycf/view?usp=sharing)
 
-Распакуй архив и запусти `EscapeExtraction.exe`.
+Unzip the archive and run `EscapeExtraction.exe`.
 
-## Контакты
+## Contact
 
 GitHub: [EduardNarezhnev](https://github.com/EduardNarezhnev)

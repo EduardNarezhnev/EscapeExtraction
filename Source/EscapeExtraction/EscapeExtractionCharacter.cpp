@@ -38,7 +38,7 @@ void AEscapeExtractionCharacter::BeginPlay()
 	
 	if(HealthComponent)
 	{
-		PreviousHealth = HealthComponent->CurrentHealth;;
+		PreviousHealth = HealthComponent->CurrentHealth;
 		HealthComponent->OnHealthDepleted.AddDynamic(this, &AEscapeExtractionCharacter::HandleDeath);
 		HealthComponent->OnHealthChanged.AddDynamic(this, &AEscapeExtractionCharacter::OnHealthChanged);
 	}

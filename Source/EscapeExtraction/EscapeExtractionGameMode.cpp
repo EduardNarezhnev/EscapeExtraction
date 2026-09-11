@@ -56,6 +56,9 @@ void AEscapeExtractionGameMode::RestartGame()
 
 void AEscapeExtractionGameMode::PerformRestart()
 {
+    UWorld* World = GetWorld();
+    if (!World) return;
+    
     FString CurrentLevelName = UGameplayStatics::GetCurrentLevelName(this);
     UGameplayStatics::OpenLevel(this, FName(*CurrentLevelName));
 }

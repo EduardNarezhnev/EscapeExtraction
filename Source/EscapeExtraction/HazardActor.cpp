@@ -130,15 +130,13 @@ void AHazardActor::MoveTowardsPlayer(float DeltaTime)
 
 	FVector Direction = (CachedPlayer->GetActorLocation() - GetActorLocation()).GetSafeNormal();
 
-	FVector NewLocation = GetActorLocation() + Direction * Speed * DeltaTime;
-
 	AddActorWorldOffset(Direction * Speed * DeltaTime, true);
 }
 
 void AHazardActor::ReturnToBase(float DeltaTime)
 {
-	float Speed = 2.0f;
-	FVector NewLocation = FMath::VInterpTo(GetActorLocation(), InitialLocation, DeltaTime, Speed);
+	float InterpSpeed = 2.0f;
+	FVector NewLocation = FMath::VInterpTo(GetActorLocation(), InitialLocation, DeltaTime, InterpSpeed);
 	SetActorLocation(NewLocation);
 }
 

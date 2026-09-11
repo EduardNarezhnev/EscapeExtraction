@@ -38,14 +38,14 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Game")
 	EGameState GetCurrentState() const { return CurrentState; }
 
-	UFUNCTION(BlueprintCallable, Category = "Game")
-	void SetCurrentState(EGameState NewState) { CurrentState = NewState; }
-
 	UFUNCTION(BlueprintImplementableEvent, Category = "Game")
 	void BP_GameOver(bool bWon);
 
 protected:
 	virtual void BeginPlay() override;
+	
+	UFUNCTION(BlueprintCallable, Category = "Game")
+	void SetCurrentState(EGameState NewState) { CurrentState = NewState; }
 
 private:
 	EGameState CurrentState = EGameState::WaitingToStart;

@@ -15,7 +15,7 @@ class ESCAPEEXTRACTION_API AKeyPickup : public APickupActor
 	GENERATED_BODY()
 
 public:
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Pickup");
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Pickup")
 	int32 KeyCount = 1;
 
 protected:

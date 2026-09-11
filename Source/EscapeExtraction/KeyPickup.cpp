@@ -6,7 +6,7 @@
 
 void AKeyPickup::ApplyEffect(AEscapeExtractionCharacter *Character)
 {
-    if(Character)
+    if(Character && KeyCount > 0)
     {
         Character->AddItem(KeyCount);
         Destroy();
