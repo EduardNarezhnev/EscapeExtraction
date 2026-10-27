@@ -51,6 +51,12 @@ Unreal Engine 5.6, C++ (core logic), Blueprint (UI, effects, sounds), DataAsset 
 
 Unzip the archive and run `EscapeExtraction.exe`.
 
+## Known Limitations
+
+- Single level only (no save/load).
+- No graphics or control settings.
+- Windows 64-bit only.
+
 ## Contact
 
 GitHub: [EduardNarezhnev](https://github.com/EduardNarezhnev)

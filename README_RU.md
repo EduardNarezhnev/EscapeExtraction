@@ -51,6 +51,12 @@ Unreal Engine 5.6, C++(основная логика), Blueprint(для UI, зв
 
 Распакуй архив и запусти `EscapeExtraction.exe`.
 
+## Ограничения
+
+- Один уровень (без сохранений).
+- Нет настроек графики и управления.
+- Только Windows 64-bit.
+
 ## Контакты
 
 GitHub: [EduardNarezhnev](https://github.com/EduardNarezhnev)
